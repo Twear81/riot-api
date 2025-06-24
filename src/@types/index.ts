@@ -771,7 +771,24 @@ export namespace RiotAPITypes {
       wardsGuarded: number;
     }
 
+    export interface MissionsDTO {
+      playerScore0: number;
+      playerScore1: number;
+      playerScore2: number;
+      playerScore3: number;
+      playerScore4: number;
+      playerScore5: number;
+      playerScore6: number;
+      playerScore7: number;
+      playerScore8: number;
+      playerScore9: number;
+      playerScore10: number;
+      playerScore11: number;
+    }
+
     export interface ParticipantDTO {
+      allInPings: number;
+      assistMePings: number;
       assists: number;
       baronKills: number;
       bountyLevel: number;
@@ -781,6 +798,7 @@ export namespace RiotAPITypes {
       championId: number;
       championName: string;
       championTransform: number;
+      commandPings: number;
       consumablesPurchased: number;
       damageDealtToBuildings: number;
       damageDealtToObjectives: number;
@@ -790,14 +808,19 @@ export namespace RiotAPITypes {
       detectorWardsPlaced: number;
       doubleKills: number;
       dragonKills: number;
+      eligibleForProgression: boolean;
+      enemyMissingPings: number;
+      enemyVisionPings: number;
       firstBloodAssist: boolean;
       firstBloodKill: boolean;
       firstTowerAssist: boolean;
       firstTowerKill: boolean;
       gameEndedInEarlySurrender: boolean;
       gameEndedInSurrender: boolean;
+      getBackPings: number;
       goldEarned: number;
       goldSpent: number;
+      holdPings: number;
       individualPosition: string;
       inhibitorKills: number;
       inhibitorTakedowns: number;
@@ -820,22 +843,44 @@ export namespace RiotAPITypes {
       magicDamageDealt: number;
       magicDamageDealtToChampions: number;
       magicDamageTaken: number;
+      missions: MissionsDTO;
       neutralMinionsKilled: number;
+      needVisionPings: number;
       nexusKills: number;
-      nexusLost: number;
       nexusTakedowns: number;
+      nexusLost: number;
       objectivesStolen: number;
       objectivesStolenAssists: number;
+      onMyWayPings: number;
       participantId: number;
       pentaKills: number;
       perks: PerksDTO;
       physicalDamageDealt: number;
       physicalDamageDealtToChampions: number;
       physicalDamageTaken: number;
+      placement: number;
+      playerAugment1: number;
+      playerAugment2: number;
+      playerAugment3: number;
+      playerAugment4: number;
+      playerScore0: number;
+      playerScore1: number;
+      playerScore2: number;
+      playerScore3: number;
+      playerScore4: number;
+      playerScore5: number;
+      playerScore6: number;
+      playerScore7: number;
+      playerScore8: number;
+      playerScore9: number;
+      playerScore10: number;
+      playerScore11: number;
+      playerSubteamId: number;
       profileIcon: number;
       puuid: string;
+      pushPings: number;
       quadraKills: number;
-      riotIdName: string;
+      riotIdGameName: string;
       riotIdTagline: string;
       role: string;
       sightWardsBoughtInGame: number;
@@ -843,6 +888,7 @@ export namespace RiotAPITypes {
       spell2Casts: number;
       spell3Casts: number;
       spell4Casts: number;
+      subteamPlacement: number;
       summoner1Casts: number;
       summoner1Id: number;
       summoner2Casts: number;
@@ -855,10 +901,12 @@ export namespace RiotAPITypes {
       teamPosition: string;
       timeCCingOthers: number;
       timePlayed: number;
+      totalAllyJungleMinionsKilled: number;
       totalDamageDealt: number;
       totalDamageDealtToChampions: number;
       totalDamageShieldedOnTeammates: number;
       totalDamageTaken: number;
+      totalEnemyJungleMinionsKilled: number;
       totalHeal: number;
       totalHealsOnTeammates: number;
       totalMinionsKilled: number;
@@ -873,6 +921,7 @@ export namespace RiotAPITypes {
       turretTakedowns: number;
       turretsLost: number;
       unrealKills: number;
+      visionClearedPings: number;
       visionScore: number;
       visionWardsBoughtInGame: number;
       wardsKilled: number;
