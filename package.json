@@ -1,6 +1,6 @@
 {
   "name": "@fightmegg/riot-api",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Client for for interactacting with Riot Games API",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
@@ -30,7 +30,7 @@
   },
   "homepage": "https://github.com/fightmegg/riot-api#readme",
   "dependencies": {
-    "@ballaual/riot-rate-limiter": "^2.0.0",
+    "@ballaual/riot-rate-limiter": "git+https://github.com/Twear81/riot-rate-limiter.git",
     "debug": "^4.3.4",
     "ioredis": "^5.4.1",
     "node-fetch": "^2.6.1",
