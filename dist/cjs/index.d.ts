@@ -100,9 +100,9 @@ export declare class RiotAPI {
             region: RiotAPITypes.LoLRegion;
             queue: RiotAPITypes.QUEUE;
         }) => Promise<RiotAPITypes.League.LeagueListDTO>;
-        getEntriesByPUUID: ({ region, puuid, }: {
+        getEntriesByPUUID: ({ region, encryptedPUUID, }: {
             region: RiotAPITypes.LoLRegion;
-            puuid: string;
+            encryptedPUUID: string;
         }) => Promise<RiotAPITypes.League.LeagueEntryDTO[]>;
         getAllEntries: ({ region, queue, tier, division, }: {
             region: RiotAPITypes.LoLRegion;
@@ -248,9 +248,9 @@ export declare class RiotAPI {
         getChallenger: ({ region, }: {
             region: RiotAPITypes.LoLRegion;
         }) => Promise<RiotAPITypes.TftLeague.LeagueListDTO>;
-        getEntriesByPUUID: ({ region, puuid, }: {
+        getEntriesByPUUID: ({ region, encryptedPUUID, }: {
             region: RiotAPITypes.LoLRegion;
-            puuid: string;
+            encryptedPUUID: string;
         }) => Promise<RiotAPITypes.TftLeague.LeagueEntryDTO[]>;
         getAllEntries: ({ region, tier, division, params, }: {
             region: RiotAPITypes.LoLRegion;

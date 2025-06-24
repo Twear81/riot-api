@@ -408,17 +408,17 @@ export class RiotAPI {
         ),
       getEntriesByPUUID: ({
         region,
-        puuid,
+        encryptedPUUID,
       }: {
         region: RiotAPITypes.LoLRegion;
-        puuid: string;
+        encryptedPUUID: string;
       }): Promise<RiotAPITypes.League.LeagueEntryDTO[]> =>
         this.request(
           region,
           RiotAPITypes.METHOD_KEY.LEAGUE_V4.GET_ENTRIES_BY_PUUID,
-          { puuid },
+          { encryptedPUUID },
           {
-            id: `${region}.league.getEntriesByPUUID.${puuid}`,
+            id: `${region}.league.getEntriesByEncryptedPUUID.${encryptedPUUID}`,
           }
         ),
       getAllEntries: ({
@@ -898,16 +898,16 @@ export class RiotAPI {
         ),
       getEntriesByPUUID: ({
         region,
-        puuid,
+        encryptedPUUID,
       }: {
         region: RiotAPITypes.LoLRegion;
-        puuid: string;
+        encryptedPUUID: string;
       }): Promise<RiotAPITypes.TftLeague.LeagueEntryDTO[]> =>
         this.request(
           region,
           RiotAPITypes.METHOD_KEY.TFT_LEAGUE_V1.GET_ENTRIES_BY_PUUID,
-          { puuid },
-          { id: `${region}.tftLeague.getEntriesBypuuid.${puuid}` }
+          { encryptedPUUID },
+          { id: `${region}.tftLeague.getEntriesByEncryptedPUUID.${encryptedPUUID}` }
         ),
       getAllEntries: ({
         region,

@@ -136,8 +136,8 @@ export class RiotAPI {
             getChallengerByQueue: ({ region, queue, }) => this.request(region, RiotAPITypes.METHOD_KEY.LEAGUE_V4.GET_CHALLENGER_BY_QUEUE, { queue }, {
                 id: `${region}.league.getChallengerByQueue.${queue}`,
             }),
-            getEntriesByPUUID: ({ region, puuid, }) => this.request(region, RiotAPITypes.METHOD_KEY.LEAGUE_V4.GET_ENTRIES_BY_PUUID, { puuid }, {
-                id: `${region}.league.getEntriesByPUUID.${puuid}`,
+            getEntriesByPUUID: ({ region, encryptedPUUID, }) => this.request(region, RiotAPITypes.METHOD_KEY.LEAGUE_V4.GET_ENTRIES_BY_PUUID, { encryptedPUUID }, {
+                id: `${region}.league.getEntriesByEncryptedPUUID.${encryptedPUUID}`,
             }),
             getAllEntries: ({ region, queue, tier, division, }) => this.request(region, RiotAPITypes.METHOD_KEY.LEAGUE_V4.GET_ALL_ENTRIES, { queue, tier, division }, {
                 id: `${region}.league.getAllEntries.${queue}.${tier}.${division}`,
@@ -240,7 +240,7 @@ export class RiotAPI {
     get tftLeague() {
         return {
             getChallenger: ({ region, }) => this.request(region, RiotAPITypes.METHOD_KEY.TFT_LEAGUE_V1.GET_CHALLENGER, {}, { id: `${region}.tftLeague.getChallenger` }),
-            getEntriesByPUUID: ({ region, puuid, }) => this.request(region, RiotAPITypes.METHOD_KEY.TFT_LEAGUE_V1.GET_ENTRIES_BY_PUUID, { puuid }, { id: `${region}.tftLeague.getEntriesBypuuid.${puuid}` }),
+            getEntriesByPUUID: ({ region, encryptedPUUID, }) => this.request(region, RiotAPITypes.METHOD_KEY.TFT_LEAGUE_V1.GET_ENTRIES_BY_PUUID, { encryptedPUUID }, { id: `${region}.tftLeague.getEntriesByEncryptedPUUID.${encryptedPUUID}` }),
             getAllEntries: ({ region, tier, division, params, }) => this.request(region, RiotAPITypes.METHOD_KEY.TFT_LEAGUE_V1.GET_ALL_ENTRIES, { tier, division }, {
                 id: `${region}.tftLeague.getAllEntries.${tier}.${division}`,
                 params,
