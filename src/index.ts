@@ -898,16 +898,16 @@ export class RiotAPI {
         ),
       getEntriesByPUUID: ({
         region,
-        encryptedPUUID,
+        puuid,
       }: {
         region: RiotAPITypes.LoLRegion;
-        encryptedPUUID: string;
+        puuid: string;
       }): Promise<RiotAPITypes.TftLeague.LeagueEntryDTO[]> =>
         this.request(
           region,
           RiotAPITypes.METHOD_KEY.TFT_LEAGUE_V1.GET_ENTRIES_BY_PUUID,
-          { encryptedPUUID },
-          { id: `${region}.tftLeague.getEntriesByEncryptedPUUID.${encryptedPUUID}` }
+          { puuid },
+          { id: `${region}.tftLeague.getEntriesByPUUID.${puuid}` }
         ),
       getAllEntries: ({
         region,

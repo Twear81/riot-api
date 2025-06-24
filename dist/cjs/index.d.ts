@@ -248,9 +248,9 @@ export declare class RiotAPI {
         getChallenger: ({ region, }: {
             region: RiotAPITypes.LoLRegion;
         }) => Promise<RiotAPITypes.TftLeague.LeagueListDTO>;
-        getEntriesByPUUID: ({ region, encryptedPUUID, }: {
+        getEntriesByPUUID: ({ region, puuid, }: {
             region: RiotAPITypes.LoLRegion;
-            encryptedPUUID: string;
+            puuid: string;
         }) => Promise<RiotAPITypes.TftLeague.LeagueEntryDTO[]>;
         getAllEntries: ({ region, tier, division, params, }: {
             region: RiotAPITypes.LoLRegion;
