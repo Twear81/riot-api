@@ -3,7 +3,7 @@ import {
   METHODS,
   PlatformId,
   RiotRateLimiter,
-} from "@fightmegg/riot-rate-limiter";
+} from "@ballaual/riot-rate-limiter";
 import Bottleneck from "bottleneck";
 import debug from "debug";
 import { RedisOptions } from "ioredis";
@@ -157,7 +157,7 @@ export class RiotAPI {
       }): Promise<RiotAPITypes.Account.AccountDTO> =>
         this.request(
           region,
-          RiotAPITypes.METHOD_KEY.ACCOUNT.GET_BY_PUUID,
+          RiotAPITypes.METHOD_KEY.ACCOUNT_V1.GET_BY_PUUID,
           { puuid },
           { id: `${region}.account.getByPUUID.${puuid}`, priority: 4 }
         ),
@@ -172,7 +172,7 @@ export class RiotAPI {
       }): Promise<RiotAPITypes.Account.AccountDTO> =>
         this.request(
           region,
-          RiotAPITypes.METHOD_KEY.ACCOUNT.GET_BY_RIOT_ID,
+          RiotAPITypes.METHOD_KEY.ACCOUNT_V1.GET_BY_RIOT_ID,
           { gameName, tagLine },
           {
             id: `${region}.account.getByRiotId.${gameName}.${tagLine}`,
@@ -188,7 +188,7 @@ export class RiotAPI {
       }): Promise<RiotAPITypes.Account.AccountDTO> =>
         this.request(
           region,
-          RiotAPITypes.METHOD_KEY.ACCOUNT.GET_BY_ACCESS_TOKEN,
+          RiotAPITypes.METHOD_KEY.ACCOUNT_V1.GET_BY_ACCESS_TOKEN,
           {},
           {
             id: `${region}.account.getByAccessToken`,
@@ -206,7 +206,7 @@ export class RiotAPI {
       }): Promise<RiotAPITypes.Account.ActiveShardDTO> =>
         this.request(
           region,
-          RiotAPITypes.METHOD_KEY.ACCOUNT.GET_ACTIVE_SHARD_FOR_PLAYER,
+          RiotAPITypes.METHOD_KEY.ACCOUNT_V1.GET_ACTIVE_SHARD_FOR_PLAYER,
           { game, puuid },
           { id: `${region}.account.getActiveShardForPlayer.${game}.${puuid}` }
         ),
@@ -224,7 +224,7 @@ export class RiotAPI {
       }): Promise<RiotAPITypes.ChampionMastery.ChampionMasteryDTO[]> =>
         this.request(
           region,
-          RiotAPITypes.METHOD_KEY.CHAMPION_MASTERY.GET_ALL_CHAMPIONS,
+          RiotAPITypes.METHOD_KEY.CHAMPION_MASTERY_V4.GET_ALL_CHAMPIONS,
           { summonerId },
           { id: `${region}.championMastery.getAllChampions.${summonerId}` }
         ),
@@ -239,7 +239,7 @@ export class RiotAPI {
       }): Promise<RiotAPITypes.ChampionMastery.ChampionMasteryDTO> =>
         this.request(
           region,
-          RiotAPITypes.METHOD_KEY.CHAMPION_MASTERY.GET_CHAMPION_MASTERY,
+          RiotAPITypes.METHOD_KEY.CHAMPION_MASTERY_V4.GET_CHAMPION_MASTERY,
           { championId, summonerId },
           {
             id: `${region}.championMastery.getChampion.${championId}.${summonerId}`,
@@ -258,7 +258,7 @@ export class RiotAPI {
       }): Promise<RiotAPITypes.ChampionMastery.ChampionMasteryDTO[]> =>
         this.request(
           region,
-          RiotAPITypes.METHOD_KEY.CHAMPION_MASTERY.GET_TOP_CHAMPIONS,
+          RiotAPITypes.METHOD_KEY.CHAMPION_MASTERY_V4.GET_TOP_CHAMPIONS,
           { summonerId },
           {
             id: `${region}.championMastery.getTopChampions.${summonerId}`,
@@ -274,7 +274,7 @@ export class RiotAPI {
       }): Promise<number> =>
         this.request(
           region,
-          RiotAPITypes.METHOD_KEY.CHAMPION_MASTERY.GET_CHAMPION_MASTERY_SCORE,
+          RiotAPITypes.METHOD_KEY.CHAMPION_MASTERY_V4.GET_CHAMPION_MASTERY_SCORE,
           { summonerId },
           { id: `${region}.championMastery.getMasteryScore.${summonerId}` }
         ),
@@ -290,7 +290,7 @@ export class RiotAPI {
       }): Promise<RiotAPITypes.Champion.ChampionInfoDTO> =>
         this.request(
           region,
-          RiotAPITypes.METHOD_KEY.CHAMPION.GET_CHAMPION_ROTATIONS,
+          RiotAPITypes.METHOD_KEY.CHAMPION_V3.GET_CHAMPION_ROTATIONS,
           {},
           { id: `${region}.champion.getRotations` }
         ),
@@ -299,18 +299,18 @@ export class RiotAPI {
 
   get clash() {
     return {
-      getPlayersBySummonerId: ({
+      getPlayersByPUUID: ({
         region,
-        summonerId,
+        puuid,
       }: {
         region: RiotAPITypes.LoLRegion;
-        summonerId: string;
+        puuid: string;
       }): Promise<RiotAPITypes.Clash.PlayerDTO[]> =>
         this.request(
           region,
-          RiotAPITypes.METHOD_KEY.CLASH.GET_PLAYERS_BY_SUMMONER,
-          { summonerId },
-          { id: `${region}.clash.getPlayersBySummonerId.${summonerId}` }
+          RiotAPITypes.METHOD_KEY.CLASH_V1.GET_PLAYERS_BY_PUUID,
+          { puuid },
+          { id: `${region}.clash.getPlayersByPUUID.${puuid}` }
         ),
       getTeamById: ({
         region,
@@ -321,7 +321,7 @@ export class RiotAPI {
       }): Promise<RiotAPITypes.Clash.TeamDTO> =>
         this.request(
           region,
-          RiotAPITypes.METHOD_KEY.CLASH.GET_TEAM,
+          RiotAPITypes.METHOD_KEY.CLASH_V1.GET_TEAM,
           { teamId },
           { id: `${region}.clash.getTeamById.${teamId}` }
         ),
@@ -332,7 +332,7 @@ export class RiotAPI {
       }): Promise<RiotAPITypes.Clash.TournamentDTO[]> =>
         this.request(
           region,
-          RiotAPITypes.METHOD_KEY.CLASH.GET_TOURNAMENTS,
+          RiotAPITypes.METHOD_KEY.CLASH_V1.GET_TOURNAMENTS,
           {},
           { id: `${region}.clash.getTournaments` }
         ),
@@ -345,7 +345,7 @@ export class RiotAPI {
       }): Promise<RiotAPITypes.Clash.TournamentDTO> =>
         this.request(
           region,
-          RiotAPITypes.METHOD_KEY.CLASH.GET_TOURNAMENT,
+          RiotAPITypes.METHOD_KEY.CLASH_V1.GET_TOURNAMENT,
           { tournamentId },
           { id: `${region}.clash.getTournamentById.${tournamentId}` }
         ),
@@ -358,7 +358,7 @@ export class RiotAPI {
       }): Promise<RiotAPITypes.Clash.TeamDTO> =>
         this.request(
           region,
-          RiotAPITypes.METHOD_KEY.CLASH.GET_TOURNAMENT_TEAM,
+          RiotAPITypes.METHOD_KEY.CLASH_V1.GET_TOURNAMENT_TEAM,
           { teamId },
           { id: `${region}.clash.getTournamentByTeamId.${teamId}` }
         ),
@@ -380,7 +380,7 @@ export class RiotAPI {
       }): Promise<RiotAPITypes.League.LeagueEntryDTO[]> =>
         this.request(
           region,
-          RiotAPITypes.METHOD_KEY.LEAGUE_EXP.GET_LEAGUE_ENTRIES,
+          RiotAPITypes.METHOD_KEY.LEAGUE_EXP_V4.GET_LEAGUE_ENTRIES,
           { queue, tier, division },
           {
             id: `${region}.leagueExp.getLeagueEntries.${queue}.${tier}.${division}`,
@@ -400,25 +400,25 @@ export class RiotAPI {
       }): Promise<RiotAPITypes.League.LeagueListDTO> =>
         this.request(
           region,
-          RiotAPITypes.METHOD_KEY.LEAGUE.GET_CHALLENGER_BY_QUEUE,
+          RiotAPITypes.METHOD_KEY.LEAGUE_V4.GET_CHALLENGER_BY_QUEUE,
           { queue },
           {
             id: `${region}.league.getChallengerByQueue.${queue}`,
           }
         ),
-      getEntriesBySummonerId: ({
+      getEntriesByPUUID: ({
         region,
-        summonerId,
+        puuid,
       }: {
         region: RiotAPITypes.LoLRegion;
-        summonerId: string;
+        puuid: string;
       }): Promise<RiotAPITypes.League.LeagueEntryDTO[]> =>
         this.request(
           region,
-          RiotAPITypes.METHOD_KEY.LEAGUE.GET_ENTRIES_BY_SUMMONER,
-          { summonerId },
+          RiotAPITypes.METHOD_KEY.LEAGUE_V4.GET_ENTRIES_BY_PUUID,
+          { puuid },
           {
-            id: `${region}.league.getEntriesBySummonerId.${summonerId}`,
+            id: `${region}.league.getEntriesByPUUID.${puuid}`,
           }
         ),
       getAllEntries: ({
@@ -434,7 +434,7 @@ export class RiotAPI {
       }): Promise<RiotAPITypes.League.LeagueEntryDTO[]> =>
         this.request(
           region,
-          RiotAPITypes.METHOD_KEY.LEAGUE.GET_ALL_ENTRIES,
+          RiotAPITypes.METHOD_KEY.LEAGUE_V4.GET_ALL_ENTRIES,
           { queue, tier, division },
           {
             id: `${region}.league.getAllEntries.${queue}.${tier}.${division}`,
@@ -449,7 +449,7 @@ export class RiotAPI {
       }): Promise<RiotAPITypes.League.LeagueListDTO> =>
         this.request(
           region,
-          RiotAPITypes.METHOD_KEY.LEAGUE.GET_GRANDMASTER_BY_QUEUE,
+          RiotAPITypes.METHOD_KEY.LEAGUE_V4.GET_GRANDMASTER_BY_QUEUE,
           { queue },
           {
             id: `${region}.league.getGrandmasterByQueue.${queue}`,
@@ -464,7 +464,7 @@ export class RiotAPI {
       }): Promise<RiotAPITypes.League.LeagueListDTO> =>
         this.request(
           region,
-          RiotAPITypes.METHOD_KEY.LEAGUE.GET_LEAGUE_BY_ID,
+          RiotAPITypes.METHOD_KEY.LEAGUE_V4.GET_LEAGUE_BY_ID,
           { leagueId },
           {
             id: `${region}.league.getById.${leagueId}`,
@@ -479,7 +479,7 @@ export class RiotAPI {
       }): Promise<RiotAPITypes.League.LeagueListDTO> =>
         this.request(
           region,
-          RiotAPITypes.METHOD_KEY.LEAGUE.GET_MASTER_BY_QUEUE,
+          RiotAPITypes.METHOD_KEY.LEAGUE_V4.GET_MASTER_BY_QUEUE,
           { queue },
           {
             id: `${region}.league.getMasterByQueue.${queue}`,
@@ -497,7 +497,7 @@ export class RiotAPI {
       }): Promise<RiotAPITypes.LolChallenges.ChallengeConfigInfoDTO[]> =>
         this.request(
           region,
-          RiotAPITypes.METHOD_KEY.LOL_CHALLENGES.GET_CONFIG,
+          RiotAPITypes.METHOD_KEY.LOL_CHALLENGES_V1.GET_CONFIG,
           {},
           { id: `${region}.lolChallenges.getConfig` }
         ),
@@ -508,7 +508,7 @@ export class RiotAPI {
       }): Promise<RiotAPITypes.LolChallenges.ChallengePercentilesMap> =>
         this.request(
           region,
-          RiotAPITypes.METHOD_KEY.LOL_CHALLENGES.GET_PERCENTILES,
+          RiotAPITypes.METHOD_KEY.LOL_CHALLENGES_V1.GET_PERCENTILES,
           {},
           { id: `${region}.lolChallenges.getPercentiles` }
         ),
@@ -521,7 +521,7 @@ export class RiotAPI {
       }): Promise<RiotAPITypes.LolChallenges.ChallengeConfigInfoDTO> =>
         this.request(
           region,
-          RiotAPITypes.METHOD_KEY.LOL_CHALLENGES.GET_CONFIG_BY_ID,
+          RiotAPITypes.METHOD_KEY.LOL_CHALLENGES_V1.GET_CONFIG_BY_ID,
           { challengeId },
           { id: `${region}.lolChallenges.getConfigById.${challengeId}` }
         ),
@@ -538,7 +538,7 @@ export class RiotAPI {
       }): Promise<RiotAPITypes.LolChallenges.ApexPlayerInfoDTO> =>
         this.request(
           region,
-          RiotAPITypes.METHOD_KEY.LOL_CHALLENGES.GET_LEADERBOARD_BY_ID,
+          RiotAPITypes.METHOD_KEY.LOL_CHALLENGES_V1.GET_LEADERBOARD_BY_ID,
           { challengeId },
           {
             id: `${region}.lolChallenges.getLeaderboardById.${challengeId}`,
@@ -554,7 +554,7 @@ export class RiotAPI {
       }): Promise<RiotAPITypes.LolChallenges.ChallengePercentiles> =>
         this.request(
           region,
-          RiotAPITypes.METHOD_KEY.LOL_CHALLENGES.GET_PERCENTILES_BY_ID,
+          RiotAPITypes.METHOD_KEY.LOL_CHALLENGES_V1.GET_PERCENTILES_BY_ID,
           { challengeId },
           { id: `${region}.lolChallenges.getPercentilesById.${challengeId}` }
         ),
@@ -567,7 +567,7 @@ export class RiotAPI {
       }): Promise<RiotAPITypes.LolChallenges.PlayerInfoDTO> =>
         this.request(
           region,
-          RiotAPITypes.METHOD_KEY.LOL_CHALLENGES.GET_PLAYER_DATA_BY_PUUID,
+          RiotAPITypes.METHOD_KEY.LOL_CHALLENGES_V1.GET_PLAYER_DATA_BY_PUUID,
           { puuid },
           { id: `${region}.lolChallenges.getPlayerDataByPUUID.${puuid}` }
         ),
@@ -588,7 +588,7 @@ export class RiotAPI {
       }): Promise<RiotAPITypes.LorDeck.DeckDTO[]> =>
         this.request(
           region,
-          RiotAPITypes.METHOD_KEY.LOR_DECK.GET_DECKS_FOR_PLAYER,
+          RiotAPITypes.METHOD_KEY.LOR_DECK_V1.GET_DECKS_FOR_PLAYER,
           {},
           {
             id: `${region}.lorDeck.getDecksForPlayer`,
@@ -606,7 +606,7 @@ export class RiotAPI {
       }): Promise<string> =>
         this.request(
           region,
-          RiotAPITypes.METHOD_KEY.LOR_DECK.POST_CREATE_DECK_FOR_PLAYER,
+          RiotAPITypes.METHOD_KEY.LOR_DECK_V1.POST_CREATE_DECK_FOR_PLAYER,
           {},
           {
             id: `${region}.lorDeck.createDeck`,
@@ -632,7 +632,7 @@ export class RiotAPI {
       }): Promise<RiotAPITypes.LorInventory.CardDTO[]> =>
         this.request(
           region,
-          RiotAPITypes.METHOD_KEY.LOR_INVENTORY.GET_CARDS_OWNED_BY_PLAYER,
+          RiotAPITypes.METHOD_KEY.LOR_INVENTORY_V1.GET_CARDS_OWNED_BY_PLAYER,
           {},
           {
             id: `${region}.lorInventory.getCardsOwnedByPlayer`,
@@ -653,7 +653,7 @@ export class RiotAPI {
       }): Promise<string[]> =>
         this.request(
           region,
-          RiotAPITypes.METHOD_KEY.LOR_MATCH.GET_MATCH_IDS_BY_PUUID,
+          RiotAPITypes.METHOD_KEY.LOR_MATCH_V1.GET_MATCH_IDS_BY_PUUID,
           { puuid },
           { id: `${region}.lorMatch.getMatchIdsByPUUID.${puuid}` }
         ),
@@ -666,7 +666,7 @@ export class RiotAPI {
       }): Promise<RiotAPITypes.LorMatch.MatchDTO> =>
         this.request(
           region,
-          RiotAPITypes.METHOD_KEY.LOR_MATCH.GET_MATCH_BY_ID,
+          RiotAPITypes.METHOD_KEY.LOR_MATCH_V1.GET_MATCH_BY_ID,
           { matchId },
           { id: `${region}.lorMatch.getById.${matchId}` }
         ),
@@ -685,7 +685,7 @@ export class RiotAPI {
       }): Promise<RiotAPITypes.LorRanked.LeaderboardDTO> =>
         this.request(
           region,
-          RiotAPITypes.METHOD_KEY.LOR_RANKED.GET_MASTER_TIER,
+          RiotAPITypes.METHOD_KEY.LOR_RANKED_V1.GET_MASTER_TIER,
           {},
           { id: `${region}.lorRanked.getMasterTier` }
         ),
@@ -792,7 +792,7 @@ export class RiotAPI {
       }): Promise<RiotAPITypes.Spectator.CurrentGameInfoDTO> =>
         this.request(
           region,
-          RiotAPITypes.METHOD_KEY.SPECTATOR.GET_GAME_BY_SUMMONER_ID,
+          RiotAPITypes.METHOD_KEY.SPECTATOR_V5.GET_GAME_BY_SUMMONER_ID,
           { summonerId },
           { id: `${region}.spectator.getBySummonerId.${summonerId}` }
         ),
@@ -803,7 +803,7 @@ export class RiotAPI {
       }): Promise<RiotAPITypes.Spectator.FeaturedGamesDTO> =>
         this.request(
           region,
-          RiotAPITypes.METHOD_KEY.SPECTATOR.GET_FEATURED_GAMES,
+          RiotAPITypes.METHOD_KEY.SPECTATOR_V5.GET_FEATURED_GAMES,
           {},
           { id: `${region}.spectator.getFeaturedGames` }
         ),
@@ -821,7 +821,7 @@ export class RiotAPI {
       }): Promise<RiotAPITypes.Summoner.SummonerDTO> =>
         this.request(
           region,
-          RiotAPITypes.METHOD_KEY.SUMMONER.GET_BY_RSO_PUUID,
+          RiotAPITypes.METHOD_KEY.SUMMONER_V4.GET_BY_RSO_PUUID,
           { rsoPuuid },
           { id: `${region}.summoner.getByRsoPUUID.${rsoPuuid}` }
         ),
@@ -834,7 +834,7 @@ export class RiotAPI {
       }): Promise<RiotAPITypes.Summoner.SummonerDTO> =>
         this.request(
           region,
-          RiotAPITypes.METHOD_KEY.SUMMONER.GET_BY_ACCOUNT_ID,
+          RiotAPITypes.METHOD_KEY.SUMMONER_V4.GET_BY_ACCOUNT_ID,
           { accountId },
           { id: `${region}.summoner.getByAccountId.${accountId}` }
         ),
@@ -847,7 +847,7 @@ export class RiotAPI {
       }): Promise<RiotAPITypes.Summoner.SummonerDTO> =>
         this.request(
           region,
-          RiotAPITypes.METHOD_KEY.SUMMONER.GET_BY_PUUID,
+          RiotAPITypes.METHOD_KEY.SUMMONER_V4.GET_BY_PUUID,
           { puuid },
           { id: `${region}.summoner.getByPUUID.${puuid}` }
         ),
@@ -860,7 +860,7 @@ export class RiotAPI {
       }): Promise<RiotAPITypes.Summoner.SummonerDTO> =>
         this.request(
           region,
-          RiotAPITypes.METHOD_KEY.SUMMONER.GET_BY_SUMMONER_ID,
+          RiotAPITypes.METHOD_KEY.SUMMONER_V4.GET_BY_SUMMONER_ID,
           { summonerId },
           { id: `${region}.summoner.getBySummonerId.${summonerId}` }
         ),
@@ -873,7 +873,7 @@ export class RiotAPI {
       }): Promise<RiotAPITypes.Summoner.SummonerDTO> =>
         this.request(
           region,
-          RiotAPITypes.METHOD_KEY.SUMMONER.GET_BY_ACCESS_TOKEN,
+          RiotAPITypes.METHOD_KEY.SUMMONER_V4.GET_BY_ACCESS_TOKEN,
           {},
           {
             id: `${region}.summoner.getByAccessToken`,
@@ -892,22 +892,22 @@ export class RiotAPI {
       }): Promise<RiotAPITypes.TftLeague.LeagueListDTO> =>
         this.request(
           region,
-          RiotAPITypes.METHOD_KEY.TFT_LEAGUE.GET_CHALLENGER,
+          RiotAPITypes.METHOD_KEY.TFT_LEAGUE_V1.GET_CHALLENGER,
           {},
           { id: `${region}.tftLeague.getChallenger` }
         ),
-      getEntriesBySummonerId: ({
+      getEntriesByPUUID: ({
         region,
-        summonerId,
+        puuid,
       }: {
         region: RiotAPITypes.LoLRegion;
-        summonerId: string;
+        puuid: string;
       }): Promise<RiotAPITypes.TftLeague.LeagueEntryDTO[]> =>
         this.request(
           region,
-          RiotAPITypes.METHOD_KEY.TFT_LEAGUE.GET_ENTRIES_BY_SUMMONER,
-          { summonerId },
-          { id: `${region}.tftLeague.getEntriesBySummonerId.${summonerId}` }
+          RiotAPITypes.METHOD_KEY.TFT_LEAGUE_V1.GET_ENTRIES_BY_PUUID,
+          { puuid },
+          { id: `${region}.tftLeague.getEntriesBypuuid.${puuid}` }
         ),
       getAllEntries: ({
         region,
@@ -924,7 +924,7 @@ export class RiotAPI {
       }): Promise<RiotAPITypes.TftLeague.LeagueEntryDTO[]> =>
         this.request(
           region,
-          RiotAPITypes.METHOD_KEY.TFT_LEAGUE.GET_ALL_ENTRIES,
+          RiotAPITypes.METHOD_KEY.TFT_LEAGUE_V1.GET_ALL_ENTRIES,
           { tier, division },
           {
             id: `${region}.tftLeague.getAllEntries.${tier}.${division}`,
@@ -938,7 +938,7 @@ export class RiotAPI {
       }): Promise<RiotAPITypes.TftLeague.LeagueListDTO> =>
         this.request(
           region,
-          RiotAPITypes.METHOD_KEY.TFT_LEAGUE.GET_GRANDMASTER,
+          RiotAPITypes.METHOD_KEY.TFT_LEAGUE_V1.GET_GRANDMASTER,
           {},
           { id: `${region}.tftLeague.getGrandmaster` }
         ),
@@ -951,7 +951,7 @@ export class RiotAPI {
       }): Promise<RiotAPITypes.TftLeague.LeagueListDTO> =>
         this.request(
           region,
-          RiotAPITypes.METHOD_KEY.TFT_LEAGUE.GET_LEAGUE_BY_ID,
+          RiotAPITypes.METHOD_KEY.TFT_LEAGUE_V1.GET_LEAGUE_BY_ID,
           { leagueId },
           { id: `${region}.tftLeague.getLeagueById.${leagueId}` }
         ),
@@ -962,7 +962,7 @@ export class RiotAPI {
       }): Promise<RiotAPITypes.TftLeague.LeagueListDTO> =>
         this.request(
           region,
-          RiotAPITypes.METHOD_KEY.TFT_LEAGUE.GET_MASTER,
+          RiotAPITypes.METHOD_KEY.TFT_LEAGUE_V1.GET_MASTER,
           {},
           { id: `${region}.tftLeague.getMaster` }
         ),
@@ -975,7 +975,7 @@ export class RiotAPI {
       }): Promise<RiotAPITypes.TftLeague.TopRatedLadderEntryDTO> =>
         this.request(
           region,
-          RiotAPITypes.METHOD_KEY.TFT_LEAGUE.GET_TOP_RATED_LADDER_BY_QUEUE,
+          RiotAPITypes.METHOD_KEY.TFT_LEAGUE_V1.GET_TOP_RATED_LADDER_BY_QUEUE,
           { queue },
           { id: `${region}.tftLeague.getTopRatedLadderByQueue.${queue}` }
         ),
@@ -1000,7 +1000,7 @@ export class RiotAPI {
       }): Promise<string[]> =>
         this.request(
           region,
-          RiotAPITypes.METHOD_KEY.TFT_MATCH.GET_MATCH_IDS_BY_PUUID,
+          RiotAPITypes.METHOD_KEY.TFT_MATCH_V1.GET_MATCH_IDS_BY_PUUID,
           { puuid },
           { id: `${region}.tftMatch.getMatchIdsByPUUID.${puuid}`, params }
         ),
@@ -1013,7 +1013,7 @@ export class RiotAPI {
       }): Promise<RiotAPITypes.TftMatch.MatchDTO> =>
         this.request(
           region,
-          RiotAPITypes.METHOD_KEY.TFT_MATCH.GET_MATCH_BY_ID,
+          RiotAPITypes.METHOD_KEY.TFT_MATCH_V1.GET_MATCH_BY_ID,
           { matchId },
           { id: `${region}.tftMatch.getById.${matchId}` }
         ),
@@ -1031,7 +1031,7 @@ export class RiotAPI {
       }): Promise<RiotAPITypes.Summoner.SummonerDTO> =>
         this.request(
           region,
-          RiotAPITypes.METHOD_KEY.TFT_SUMMONER.GET_BY_ACCOUNT_ID,
+          RiotAPITypes.METHOD_KEY.TFT_SUMMONER_V1.GET_BY_ACCOUNT_ID,
           { accountId },
           { id: `${region}.tftSummoner.getByAccountId.${accountId}` }
         ),
@@ -1044,7 +1044,7 @@ export class RiotAPI {
       }): Promise<RiotAPITypes.Summoner.SummonerDTO> =>
         this.request(
           region,
-          RiotAPITypes.METHOD_KEY.TFT_SUMMONER.GET_BY_ACCESS_TOKEN,
+          RiotAPITypes.METHOD_KEY.TFT_SUMMONER_V1.GET_BY_ACCESS_TOKEN,
           {},
           {
             id: `${region}.tftSummoner.getByAccessToken`,
@@ -1060,7 +1060,7 @@ export class RiotAPI {
       }): Promise<RiotAPITypes.Summoner.SummonerDTO> =>
         this.request(
           region,
-          RiotAPITypes.METHOD_KEY.TFT_SUMMONER.GET_BY_PUUID,
+          RiotAPITypes.METHOD_KEY.TFT_SUMMONER_V1.GET_BY_PUUID,
           { puuid },
           { id: `${region}.tftSummoner.getByPUUID.${puuid}` }
         ),
@@ -1073,7 +1073,7 @@ export class RiotAPI {
       }): Promise<RiotAPITypes.Summoner.SummonerDTO> =>
         this.request(
           region,
-          RiotAPITypes.METHOD_KEY.TFT_SUMMONER.GET_BY_SUMMONER_ID,
+          RiotAPITypes.METHOD_KEY.TFT_SUMMONER_V1.GET_BY_SUMMONER_ID,
           { summonerId },
           { id: `${region}.tftSummoner.getBySummonerId.${summonerId}` }
         ),
@@ -1298,7 +1298,7 @@ export class RiotAPI {
       }): Promise<RiotAPITypes.ValContent.ContentDTO> =>
         this.request(
           region,
-          RiotAPITypes.METHOD_KEY.VAL_CONTENT.GET_CONTENT,
+          RiotAPITypes.METHOD_KEY.VAL_CONTENT_V1.GET_CONTENT,
           {},
           { id: `${region}.valContent.getContent`, params }
         ),
@@ -1316,7 +1316,7 @@ export class RiotAPI {
       }): Promise<RiotAPITypes.ValMatch.MatchDTO> =>
         this.request(
           region,
-          RiotAPITypes.METHOD_KEY.VAL_MATCH.GET_MATCH_BY_ID,
+          RiotAPITypes.METHOD_KEY.VAL_MATCH_V1.GET_MATCH_BY_ID,
           { matchId },
           { id: `${region}.valMatch.getById.${matchId}` }
         ),
@@ -1329,7 +1329,7 @@ export class RiotAPI {
       }): Promise<RiotAPITypes.ValMatch.MatchlistDTO> =>
         this.request(
           region,
-          RiotAPITypes.METHOD_KEY.VAL_MATCH.GET_MATCHLIST_BY_PUUID,
+          RiotAPITypes.METHOD_KEY.VAL_MATCH_V1.GET_MATCHLIST_BY_PUUID,
           { puuid },
           { id: `${region}.valMatch.getMatchlistByPUUID.${puuid}` }
         ),
@@ -1342,7 +1342,7 @@ export class RiotAPI {
       }): Promise<RiotAPITypes.ValMatch.RecentMatchesDTO> =>
         this.request(
           region,
-          RiotAPITypes.METHOD_KEY.VAL_MATCH.GET_RECENT_MATCHES_BY_QUEUE,
+          RiotAPITypes.METHOD_KEY.VAL_MATCH_V1.GET_RECENT_MATCHES_BY_QUEUE,
           { queue },
           { id: `${region}.valMatch.getRecentMatchesByQueue.${queue}` }
         ),
@@ -1365,7 +1365,7 @@ export class RiotAPI {
       }): Promise<RiotAPITypes.ValMatch.RecentMatchesDTO> =>
         this.request(
           region,
-          RiotAPITypes.METHOD_KEY.VAL_RANKED.GET_LEADERBOARD_BY_QUEUE,
+          RiotAPITypes.METHOD_KEY.VAL_RANKED_V1.GET_LEADERBOARD_BY_QUEUE,
           { actId: queue },
           { id: `${region}.valRanked.getLeaderboardByQueue.${queue}`, params }
         ),

@@ -1,4 +1,5 @@
-import { PlatformId } from "@fightmegg/riot-rate-limiter";
+/* eslint-disable @typescript-eslint/no-redundant-type-constituents */
+import { PlatformId } from "@ballaual/riot-rate-limiter";
 import { RedisOptions } from "ioredis";
 
 export type Leaves<T> = T extends object
@@ -125,76 +126,82 @@ export namespace RiotAPITypes {
     | PlatformId.VN2;
 
   export namespace METHOD_KEY {
-    export namespace ACCOUNT {
-      export const GET_BY_PUUID = "ACCOUNT.GET_BY_PUUID";
-      export const GET_BY_RIOT_ID = "ACCOUNT.GET_BY_RIOT_ID";
-      export const GET_BY_ACCESS_TOKEN = "ACCOUNT.GET_BY_ACCESS_TOKEN";
+    export namespace ACCOUNT_V1 {
+      export const GET_BY_PUUID = "ACCOUNT_V1.GET_BY_PUUID";
+      export const GET_BY_RIOT_ID = "ACCOUNT_V1.GET_BY_RIOT_ID";
+      export const GET_BY_ACCESS_TOKEN = "ACCOUNT_V1.GET_BY_ACCESS_TOKEN";
       export const GET_ACTIVE_SHARD_FOR_PLAYER =
-        "ACCOUNT.GET_ACTIVE_SHARD_FOR_PLAYER";
+        "ACCOUNT_V1.GET_ACTIVE_SHARD_FOR_PLAYER";
     }
-    export namespace CHAMPION_MASTERY {
-      export const GET_ALL_CHAMPIONS = "CHAMPION_MASTERY.GET_ALL_CHAMPIONS";
+    export namespace CHAMPION_MASTERY_V4 {
+      export const GET_ALL_CHAMPIONS = "CHAMPION_MASTERY_V4.GET_ALL_CHAMPIONS";
       export const GET_CHAMPION_MASTERY =
-        "CHAMPION_MASTERY.GET_CHAMPION_MASTERY";
-      export const GET_TOP_CHAMPIONS = "CHAMPION_MASTERY.GET_TOP_CHAMPIONS";
+        "CHAMPION_MASTERY_V4.GET_CHAMPION_MASTERY";
+      export const GET_TOP_CHAMPIONS = "CHAMPION_MASTERY_V4.GET_TOP_CHAMPIONS";
       export const GET_CHAMPION_MASTERY_SCORE =
-        "CHAMPION_MASTERY.GET_CHAMPION_MASTERY_SCORE";
+        "CHAMPION_MASTERY_V4.GET_CHAMPION_MASTERY_SCORE";
     }
-    export namespace CHAMPION {
-      export const GET_CHAMPION_ROTATIONS = "CHAMPION.GET_CHAMPION_ROTATIONS";
+    export namespace CHAMPION_V3 {
+      export const GET_CHAMPION_ROTATIONS = "CHAMPION_V3.GET_CHAMPION_ROTATIONS";
     }
-    export namespace CLASH {
-      export const GET_PLAYERS_BY_SUMMONER = "CLASH.GET_PLAYERS_BY_SUMMONER";
-      export const GET_TEAM = "CLASH.GET_TEAM";
-      export const GET_TOURNAMENTS = "CLASH.GET_TOURNAMENTS";
-      export const GET_TOURNAMENT = "CLASH.GET_TOURNAMENT";
-      export const GET_TOURNAMENT_TEAM = "CLASH.GET_TOURNAMENT_TEAM";
+    export namespace CLASH_V1 {
+      export const GET_PLAYERS_BY_PUUID = "CLASH_V1.GET_PLAYERS_BY_PUUID";
+      export const GET_TEAM = "CLASH_V1.GET_TEAM";
+      export const GET_TOURNAMENTS = "CLASH_V1.GET_TOURNAMENTS";
+      export const GET_TOURNAMENT = "CLASH_V1.GET_TOURNAMENT";
+      export const GET_TOURNAMENT_TEAM = "CLASH_V1.GET_TOURNAMENT_TEAM";
     }
-    export namespace LEAGUE_EXP {
-      export const GET_LEAGUE_ENTRIES = "LEAGUE_EXP.GET_LEAGUE_ENTRIES";
+    export namespace LEAGUE_EXP_V4 {
+      export const GET_LEAGUE_ENTRIES = "LEAGUE_EXP_V4.GET_LEAGUE_ENTRIES";
     }
-    export namespace LEAGUE {
-      export const GET_CHALLENGER_BY_QUEUE = "LEAGUE.GET_CHALLENGER_BY_QUEUE";
-      export const GET_ENTRIES_BY_SUMMONER = "LEAGUE.GET_ENTRIES_BY_SUMMONER";
-      export const GET_ALL_ENTRIES = "LEAGUE.GET_ALL_ENTRIES";
-      export const GET_GRANDMASTER_BY_QUEUE = "LEAGUE.GET_GRANDMASTER_BY_QUEUE";
-      export const GET_LEAGUE_BY_ID = "LEAGUE.GET_LEAGUE_BY_ID";
-      export const GET_MASTER_BY_QUEUE = "LEAGUE.GET_MASTER_BY_QUEUE";
+    export namespace LEAGUE_V4 {
+      export const GET_CHALLENGER_BY_QUEUE = "LEAGUE_V4.GET_CHALLENGER_BY_QUEUE";
+      export const GET_ENTRIES_BY_PUUID = "LEAGUE_V4.GET_ENTRIES_BY_PUUID";
+      export const GET_ALL_ENTRIES = "LEAGUE_V4.GET_ALL_ENTRIES";
+      export const GET_GRANDMASTER_BY_QUEUE = "LEAGUE_V4.GET_GRANDMASTER_BY_QUEUE";
+      export const GET_LEAGUE_BY_ID = "LEAGUE_V4.GET_LEAGUE_BY_ID";
+      export const GET_MASTER_BY_QUEUE = "LEAGUE_V4.GET_MASTER_BY_QUEUE";
     }
 
-    export namespace LOL_CHALLENGES {
-      export const GET_CONFIG = "LOL_CHALLENGES.GET_CONFIG";
-      export const GET_PERCENTILES = "LOL_CHALLENGES.GET_PERCENTILES";
-      export const GET_CONFIG_BY_ID = "LOL_CHALLENGES.GET_CONFIG_BY_ID";
+    export namespace LOL_CHALLENGES_V1 {
+      export const GET_CONFIG = "LOL_CHALLENGES_V1.GET_CONFIG";
+      export const GET_PERCENTILES = "LOL_CHALLENGES_V1.GET_PERCENTILES";
+      export const GET_CONFIG_BY_ID = "LOL_CHALLENGES_V1.GET_CONFIG_BY_ID";
       export const GET_LEADERBOARD_BY_ID =
-        "LOL_CHALLENGES.GET_LEADERBOARD_BY_ID";
+        "LOL_CHALLENGES_V1.GET_LEADERBOARD_BY_ID";
       export const GET_PERCENTILES_BY_ID =
-        "LOL_CHALLENGES.GET_PERCENTILES_BY_ID";
+        "LOL_CHALLENGES_V1.GET_PERCENTILES_BY_ID";
       export const GET_PLAYER_DATA_BY_PUUID =
-        "LOL_CHALLENGES.GET_PLAYER_DATA_BY_PUUID";
+        "LOL_CHALLENGES_V1.GET_PLAYER_DATA_BY_PUUID";
     }
 
-    export namespace LOL_STATUS {
-      export const GET_PLATFORM_DATA = "LOL_STATUS.GET_PLATFORM_DATA";
+    export namespace LOL_RSO_MATCH_V1 {
+      export const GET_IDS_BY_ACCESS_TOKEN = "LOL_RSO_MATCH_V1.GET_IDS_BY_ACCESS_TOKEN";
+      export const GET_MATCH_BY_ID = "LOL_RSO_MATCH_V1.GET_MATCH_BY_ID";
+      export const GET_MATCH_TIMELINE_BY_ID = "LOL_RSO_MATCH_V1.GET_MATCH_TIMELINE_BY_ID";
     }
 
-    export namespace LOR_DECK {
-      export const GET_DECKS_FOR_PLAYER = "LOR_DECK.GET_DECKS_FOR_PLAYER";
+    export namespace LOL_STATUS_V4 {
+      export const GET_PLATFORM_DATA = "LOL_STATUS_V4.GET_PLATFORM_DATA";
+    }
+
+    export namespace LOR_DECK_V1 {
+      export const GET_DECKS_FOR_PLAYER = "LOR_DECK_V1.GET_DECKS_FOR_PLAYER";
       export const POST_CREATE_DECK_FOR_PLAYER =
-        "LOR_DECK.POST_CREATE_DECK_FOR_PLAYER";
+        "LOR_DECK_V1.POST_CREATE_DECK_FOR_PLAYER";
     }
 
-    export namespace LOR_INVENTORY {
+    export namespace LOR_INVENTORY_V1 {
       export const GET_CARDS_OWNED_BY_PLAYER =
-        "LOR_INVENTORY.GET_CARDS_OWNED_BY_PLAYER";
+        "LOR_INVENTORY_V1.GET_CARDS_OWNED_BY_PLAYER";
     }
 
-    export namespace LOR_MATCH {
-      export const GET_MATCH_IDS_BY_PUUID = "LOR_MATCH.GET_MATCH_IDS_BY_PUUID";
-      export const GET_MATCH_BY_ID = "LOR_MATCH.GET_MATCH_BY_ID";
+    export namespace LOR_MATCH_V1 {
+      export const GET_MATCH_IDS_BY_PUUID = "LOR_MATCH_V1.GET_MATCH_IDS_BY_PUUID";
+      export const GET_MATCH_BY_ID = "LOR_MATCH_V1.GET_MATCH_BY_ID";
     }
-    export namespace LOR_RANKED {
-      export const GET_MASTER_TIER = "LOR_RANKED.GET_MASTER_TIER";
+    export namespace LOR_RANKED_V1 {
+      export const GET_MASTER_TIER = "LOR_RANKED_V1.GET_MASTER_TIER";
     }
 
     export namespace LOR_STATUS_V1 {
@@ -213,43 +220,43 @@ export namespace RiotAPITypes {
       export const GET_FEATURED_GAMES = "SPECTATOR_TFT_V5.GET_FEATURED_GAMES";
     }
 
-    export namespace SPECTATOR {
+    export namespace SPECTATOR_V5 {
       export const GET_GAME_BY_SUMMONER_ID =
-        "SPECTATOR.GET_GAME_BY_SUMMONER_ID";
-      export const GET_FEATURED_GAMES = "SPECTATOR.GET_FEATURED_GAMES";
+        "SPECTATOR_V5.GET_GAME_BY_SUMMONER_ID";
+      export const GET_FEATURED_GAMES = "SPECTATOR_V5.GET_FEATURED_GAMES";
     }
-    export namespace SUMMONER {
-      export const GET_BY_RSO_PUUID = "SUMMONER.GET_BY_RSO_PUUID";
-      export const GET_BY_ACCOUNT_ID = "SUMMONER.GET_BY_ACCOUNT_ID";
-      export const GET_BY_PUUID = "SUMMONER.GET_BY_PUUID";
-      export const GET_BY_SUMMONER_ID = "SUMMONER.GET_BY_SUMMONER_ID";
-      export const GET_BY_ACCESS_TOKEN = "SUMMONER.GET_BY_ACCESS_TOKEN";
+    export namespace SUMMONER_V4 {
+      export const GET_BY_RSO_PUUID = "SUMMONER_V4.GET_BY_RSO_PUUID";
+      export const GET_BY_ACCOUNT_ID = "SUMMONER_V4.GET_BY_ACCOUNT_ID";
+      export const GET_BY_PUUID = "SUMMONER_V4.GET_BY_PUUID";
+      export const GET_BY_SUMMONER_ID = "SUMMONER_V4.GET_BY_SUMMONER_ID";
+      export const GET_BY_ACCESS_TOKEN = "SUMMONER_V4.GET_BY_ACCESS_TOKEN";
     }
-    export namespace TFT_LEAGUE {
-      export const GET_CHALLENGER = "TFT_LEAGUE.GET_CHALLENGER";
-      export const GET_ENTRIES_BY_SUMMONER =
-        "TFT_LEAGUE.GET_ENTRIES_BY_SUMMONER";
-      export const GET_ALL_ENTRIES = "TFT_LEAGUE.GET_ALL_ENTRIES";
-      export const GET_GRANDMASTER = "TFT_LEAGUE.GET_GRANDMASTER";
-      export const GET_LEAGUE_BY_ID = "TFT_LEAGUE.GET_LEAGUE_BY_ID";
-      export const GET_MASTER = "TFT_LEAGUE.GET_MASTER";
+    export namespace TFT_LEAGUE_V1 {
+      export const GET_CHALLENGER = "TFT_LEAGUE_V1.GET_CHALLENGER";
+      export const GET_ENTRIES_BY_PUUID =
+        "TFT_LEAGUE_V1.GET_ENTRIES_BY_PUUID";
+      export const GET_ALL_ENTRIES = "TFT_LEAGUE_V1.GET_ALL_ENTRIES";
+      export const GET_GRANDMASTER = "TFT_LEAGUE_V1.GET_GRANDMASTER";
+      export const GET_LEAGUE_BY_ID = "TFT_LEAGUE_V1.GET_LEAGUE_BY_ID";
+      export const GET_MASTER = "TFT_LEAGUE_V1.GET_MASTER";
       export const GET_TOP_RATED_LADDER_BY_QUEUE =
-        "TFT_LEAGUE.GET_TOP_RATED_LADDER_BY_QUEUE";
+        "TFT_LEAGUE_V1.GET_TOP_RATED_LADDER_BY_QUEUE";
     }
-    export namespace TFT_MATCH {
-      export const GET_MATCH_IDS_BY_PUUID = "TFT_MATCH.GET_MATCH_IDS_BY_PUUID";
-      export const GET_MATCH_BY_ID = "TFT_MATCH.GET_MATCH_BY_ID";
+    export namespace TFT_MATCH_V1 {
+      export const GET_MATCH_IDS_BY_PUUID = "TFT_MATCH_V1.GET_MATCH_IDS_BY_PUUID";
+      export const GET_MATCH_BY_ID = "TFT_MATCH_V1.GET_MATCH_BY_ID";
     }
 
     export namespace TFT_STATUS_V1 {
       export const GET_PLATFORM_DATA = "TFT_STATUS_V1.GET_PLATFORM_DATA";
     }
 
-    export namespace TFT_SUMMONER {
-      export const GET_BY_ACCOUNT_ID = "TFT_SUMMONER.GET_BY_ACCOUNT_ID";
-      export const GET_BY_ACCESS_TOKEN = "TFT_SUMMONER.GET_BY_ACCESS_TOKEN";
-      export const GET_BY_PUUID = "TFT_SUMMONER.GET_BY_PUUID";
-      export const GET_BY_SUMMONER_ID = "TFT_SUMMONER.GET_BY_SUMMONER_ID";
+    export namespace TFT_SUMMONER_V1 {
+      export const GET_BY_ACCOUNT_ID = "TFT_SUMMONER_V1.GET_BY_ACCOUNT_ID";
+      export const GET_BY_ACCESS_TOKEN = "TFT_SUMMONER_V1.GET_BY_ACCESS_TOKEN";
+      export const GET_BY_PUUID = "TFT_SUMMONER_V1.GET_BY_PUUID";
+      export const GET_BY_SUMMONER_ID = "TFT_SUMMONER_V1.GET_BY_SUMMONER_ID";
     }
 
     export namespace TOURNAMENT_STUB_V5 {
@@ -278,19 +285,27 @@ export namespace RiotAPITypes {
         "TOURNAMENT_V5.POST_CREATE_TOURNAMENT";
     }
 
-    export namespace VAL_CONTENT {
-      export const GET_CONTENT = "VAL_CONTENT.GET_CONTENT";
+    export namespace VAL_CONSOLE_MATCH_V1 {
+      export const GET_MATCH_BY_ID = "VAL_CONSOLE_MATCH_V1.GET_MATCH_BY_ID";
+      export const GET_MATCHLIST_BY_PUUID = "VAL_CONSOLE_MATCH_V1.GET_MATCHLIST_BY_PUUID";
+      export const GET_RECENT_MATCHES_BY_QUEUE = "VAL_CONSOLE_MATCH_V1.GET_RECENT_MATCHES_BY_QUEUE";
     }
-    export namespace VAL_MATCH {
-      export const GET_MATCH_BY_ID = "VAL_MATCH.GET_MATCH_BY_ID";
-      export const GET_MATCHLIST_BY_PUUID = "VAL_MATCH.GET_MATCHLIST_BY_PUUID";
+    export namespace VAL_CONTENT_V1 {
+      export const GET_CONTENT = "VAL_CONTENT_V1.GET_CONTENT";
+    }
+    export namespace VAL_CONSOLE_RANKED_V1 {
+      export const GET_LEADERBOARD_BY_QUEUE = "VAL_CONSOLE_RANKED_V1.GET_LEADERBOARD_BY_QUEUE";
+    }
+    export namespace VAL_MATCH_V1 {
+      export const GET_MATCH_BY_ID = "VAL_MATCH_V1.GET_MATCH_BY_ID";
+      export const GET_MATCHLIST_BY_PUUID = "VAL_MATCH_V1.GET_MATCHLIST_BY_PUUID";
       export const GET_RECENT_MATCHES_BY_QUEUE =
-        "VAL_MATCH.GET_RECENT_MATCHES_BY_QUEUE";
+        "VAL_MATCH_V1.GET_RECENT_MATCHES_BY_QUEUE";
     }
 
-    export namespace VAL_RANKED {
+    export namespace VAL_RANKED_V1 {
       export const GET_LEADERBOARD_BY_QUEUE =
-        "VAL_RANKED.GET_LEADERBOARD_BY_QUEUE";
+        "VAL_RANKED_V1.GET_LEADERBOARD_BY_QUEUE";
     }
 
     export namespace VAL_STATUS_V1 {
@@ -756,7 +771,24 @@ export namespace RiotAPITypes {
       wardsGuarded: number;
     }
 
+    export interface MissionsDTO {
+      playerScore0: number;
+      playerScore1: number;
+      playerScore2: number;
+      playerScore3: number;
+      playerScore4: number;
+      playerScore5: number;
+      playerScore6: number;
+      playerScore7: number;
+      playerScore8: number;
+      playerScore9: number;
+      playerScore10: number;
+      playerScore11: number;
+    }
+
     export interface ParticipantDTO {
+      allInPings: number;
+      assistMePings: number;
       assists: number;
       baronKills: number;
       bountyLevel: number;
@@ -766,6 +798,7 @@ export namespace RiotAPITypes {
       championId: number;
       championName: string;
       championTransform: number;
+      commandPings: number;
       consumablesPurchased: number;
       damageDealtToBuildings: number;
       damageDealtToObjectives: number;
@@ -775,14 +808,19 @@ export namespace RiotAPITypes {
       detectorWardsPlaced: number;
       doubleKills: number;
       dragonKills: number;
+      eligibleForProgression: boolean;
+      enemyMissingPings: number;
+      enemyVisionPings: number;
       firstBloodAssist: boolean;
       firstBloodKill: boolean;
       firstTowerAssist: boolean;
       firstTowerKill: boolean;
       gameEndedInEarlySurrender: boolean;
       gameEndedInSurrender: boolean;
+      getBackPings: number;
       goldEarned: number;
       goldSpent: number;
+      holdPings: number;
       individualPosition: string;
       inhibitorKills: number;
       inhibitorTakedowns: number;
@@ -805,22 +843,44 @@ export namespace RiotAPITypes {
       magicDamageDealt: number;
       magicDamageDealtToChampions: number;
       magicDamageTaken: number;
+      missions: MissionsDTO;
       neutralMinionsKilled: number;
+      needVisionPings: number;
       nexusKills: number;
-      nexusLost: number;
       nexusTakedowns: number;
+      nexusLost: number;
       objectivesStolen: number;
       objectivesStolenAssists: number;
+      onMyWayPings: number;
       participantId: number;
       pentaKills: number;
       perks: PerksDTO;
       physicalDamageDealt: number;
       physicalDamageDealtToChampions: number;
       physicalDamageTaken: number;
+      placement: number;
+      playerAugment1: number;
+      playerAugment2: number;
+      playerAugment3: number;
+      playerAugment4: number;
+      playerScore0: number;
+      playerScore1: number;
+      playerScore2: number;
+      playerScore3: number;
+      playerScore4: number;
+      playerScore5: number;
+      playerScore6: number;
+      playerScore7: number;
+      playerScore8: number;
+      playerScore9: number;
+      playerScore10: number;
+      playerScore11: number;
+      playerSubteamId: number;
       profileIcon: number;
       puuid: string;
+      pushPings: number;
       quadraKills: number;
-      riotIdName: string;
+      riotIdGameName: string;
       riotIdTagline: string;
       role: string;
       sightWardsBoughtInGame: number;
@@ -828,6 +888,7 @@ export namespace RiotAPITypes {
       spell2Casts: number;
       spell3Casts: number;
       spell4Casts: number;
+      subteamPlacement: number;
       summoner1Casts: number;
       summoner1Id: number;
       summoner2Casts: number;
@@ -840,10 +901,12 @@ export namespace RiotAPITypes {
       teamPosition: string;
       timeCCingOthers: number;
       timePlayed: number;
+      totalAllyJungleMinionsKilled: number;
       totalDamageDealt: number;
       totalDamageDealtToChampions: number;
       totalDamageShieldedOnTeammates: number;
       totalDamageTaken: number;
+      totalEnemyJungleMinionsKilled: number;
       totalHeal: number;
       totalHealsOnTeammates: number;
       totalMinionsKilled: number;
@@ -858,6 +921,7 @@ export namespace RiotAPITypes {
       turretTakedowns: number;
       turretsLost: number;
       unrealKills: number;
+      visionClearedPings: number;
       visionScore: number;
       visionWardsBoughtInGame: number;
       wardsKilled: number;
