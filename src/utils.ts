@@ -1,4 +1,4 @@
-import { PlatformId } from "@fightmegg/riot-rate-limiter";
+import { PlatformId } from "@ballaual/riot-rate-limiter";
 import { RiotAPITypes } from "./@types";
 
 export function regionToCluster(
