@@ -1445,6 +1445,7 @@ export namespace RiotAPITypes {
 
     export interface CompanionDTO {
       skin_ID: number;
+      item_ID: number;
       content_ID: string;
       species: string;
     }
